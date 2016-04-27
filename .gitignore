@@ -1,0 +1,7 @@
+# Cr# IntelliJ project files
+.idea
+*.iml
+*.pyc
+out
+gen
+# ceated by .ignore support plugin (hsz.mobi)
