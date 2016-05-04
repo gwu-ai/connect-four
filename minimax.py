@@ -215,7 +215,7 @@ class Minimax(object):
                 if state[i][j].lower() == color.lower():
                     count += self.verticalStreak(i, j, state, streak)
                     count += self.horizontalStreak(i, j, state, streak)
-                    count += self.diagonalCheck(i, j, state, streak)
+                    count += self.diagonalStreak(i, j, state, streak)
         return count
 
     def verticalStreak(self, row, col, state, streak):
@@ -244,7 +244,7 @@ class Minimax(object):
         else:
             return 0
 
-    def diagonalCheck(self, row, col, state, streak):
+    def diagonalStreak(self, row, col, state, streak):
 
         total = 0
         # check for diagonals with positive slope
