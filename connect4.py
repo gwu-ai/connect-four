@@ -1,4 +1,3 @@
-
 COLUMN = 7
 ROW = 6
 BOARD_SIZE = COLUMN * ROW
@@ -10,10 +9,8 @@ import time
 
 from player import Player, AIPlayer
 
-class Game(object):
-    """ Game object that holds state of Connect 4 board and game values
-    """
 
+class Game(object):
     board = None
     round = None
     finished = None
@@ -66,8 +63,7 @@ class Game(object):
                 self.board[i].append(' ')
 
     def newGame(self):
-        """ Function to reset the game, but not the names or colors
-        """
+
         self.round = 1
         self.finished = False
         self.winner = None
@@ -229,9 +225,6 @@ class Game(object):
         return fourInARow, slope
 
     def findFours(self):
-        """ Finds start i,j of four-in-a-row
-            Calls highlightFours
-        """
 
         for i in range(ROW):
             for j in range(COLUMN):
@@ -247,9 +240,6 @@ class Game(object):
                         self.highlightFour(i, j, 'diagonal', slope)
 
     def highlightFour(self, row, col, direction, slope=None):
-        """ This function enunciates four-in-a-rows by capitalizing
-            the character for those pieces on the board
-        """
 
         if direction == 'vertical':
             for i in range(4):
@@ -281,13 +271,13 @@ class Game(object):
             print("\t", end="")
             for j in range(COLUMN):
                 print("| " + str(self.board[i][j]), end=" ")
-            print("|")
-        print("\t  _   _   _   _   _   _   _ ")
-        print("\t  1   2   3   4   5   6   7")
+                print("|")
+            print("\t  _   _   _   _   _   _   _ ")
+            print("\t  1   2   3   4   5   6   7")
 
-        if self.finished:
-            print("Game Over!")
-            if self.winner != None:
-                print(str(self.winner.name) + " is the winner")
-            else:
-                print("Game was a draw")
+            if self.finished:
+                print("Game Over!")
+                if self.winner != None:
+                    print(str(self.winner.name) + " is the winner")
+                else:
+                    print("Game was a draw")

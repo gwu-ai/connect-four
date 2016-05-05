@@ -12,9 +12,6 @@ class Minimax(object):
         self.board = [x[:] for x in board]
 
     def alphaBetaBestMove(self, depth, state, curr_player):
-        """ Returns the best move (as a column number) and the associated alpha
-            Calls search()
-        """
 
         # determine opponent's color
         if curr_player == self.colors[0]:
@@ -77,7 +74,6 @@ class Minimax(object):
                     break
             return min_val
 
-
     def bestMove(self, depth, state, curr_player):
         """ Returns the best move (as a column number) and the associated alpha
             Calls search()
@@ -110,12 +106,6 @@ class Minimax(object):
         return best_move, best_alpha
 
     def search(self, depth, state, curr_player):
-        """ Searches the tree at depth 'depth'
-            By default, the state is the board, and curr_player is whomever 
-            called this search
-            
-            Returns the alpha value
-        """
 
         # enumerate all legal moves from this state
         legal_moves = []
@@ -130,7 +120,6 @@ class Minimax(object):
         if depth == 0 or len(legal_moves) == 0 or self.gameIsOver(state):
             # return the heuristic value of node
             return self.value(state, curr_player)
-
 
         # determine opponent's color
         if curr_player == self.colors[0]:
@@ -153,8 +142,6 @@ class Minimax(object):
         return opp_player
 
     def isLegalMove(self, column, state):
-        """ Boolean function to check if a move (column) is a legal move
-        """
 
         for i in range(ROW):
             if state[i][column] == ' ':
@@ -173,11 +160,6 @@ class Minimax(object):
             return False
 
     def makeMove(self, state, column, color):
-        """ Change a state object to reflect a player, denoted by color,
-            making a move at column 'column'
-            
-            Returns a copy of new state array with the added move
-        """
 
         temp = [x[:] for x in state]
         for i in range(ROW):
@@ -186,10 +168,6 @@ class Minimax(object):
                 return temp
 
     def value(self, state, color):
-        """
-        Heuristic evaluation function:
-        player(10000 * 4-in-a-row + 100 * 3-in-a-row + 1 * 2-in-a-row)
-        """
 
         if color == self.colors[0]:
             o_color = self.colors[1]
@@ -200,13 +178,13 @@ class Minimax(object):
         my_threes = self.checkForStreak(state, color, 3)
         my_twos = self.checkForStreak(state, color, 2)
         opp_fours = self.checkForStreak(state, o_color, 4)
-        #opp_threes = self.checkForStreak(state, o_color, 3)
-        #opp_twos = self.checkForStreak(state, o_color, 2)
+        # opp_threes = self.checkForStreak(state, o_color, 3)
+        # opp_twos = self.checkForStreak(state, o_color, 2)
 
         if opp_fours:
             return -10000
         else:
-            return my_fours * 10000 + my_threes * 100 + my_twos# - opp_fours * 10000 - opp_threes * 100 - opp_twos
+            return my_fours * 10000 + my_threes * 100 + my_twos  # - opp_fours * 10000 - opp_threes * 100 - opp_twos
 
     def checkForStreak(self, state, color, streak):
         count = 0

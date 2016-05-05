@@ -3,8 +3,6 @@ from connect4 import COLUMN
 
 
 class Player(object):
-    """ Player object.  This class is for human players.
-    """
 
     type = None  # possible types are "Human" and "AI"
     name = None
@@ -33,10 +31,6 @@ class Player(object):
 
 
 class AIPlayer(Player):
-    """ AIPlayer object that extends Player
-        The AI algorithm is minimax, the difficulty parameter is the depth to which
-        the search tree is expanded.
-    """
 
     difficulty = None
 

@@ -3,8 +3,7 @@ from connect4 import Game
 
 
 def main():
-    """ Play a game!
-    """
+
     g = Game()
     g.printState()
     player1 = g.players[0]
